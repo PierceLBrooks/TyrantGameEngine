@@ -1,0 +1,42 @@
+/*************************************/
+/** Copyright © 2014 Coldsnap Games **/
+/*************************************/
+
+/*************************************/
+/**             Headers             **/
+/*************************************/
+#import <AppKit/AppKit.h>
+#import <Foundation/Foundation.h>
+
+////////////////////////////////////////////////////////////
+/// \brief Event processing & Menu bar initialisation
+///
+////////////////////////////////////////////////////////////
+@interface TGEApplication : NSApplication
+
+
+////////////////////////////////////////////////////////////
+/// \brief Event processing
+///
+////////////////////////////////////////////////////////////
++(void)processEvent;
+
+
+////////////////////////////////////////////////////////////
+/// \brief Set up the menu bar and its items
+///
+////////////////////////////////////////////////////////////
++(void)setUpMenuBar;
+
+
+////////////////////////////////////////////////////////////
+/// \brief Dispatch events
+///
+/// This overload of -[NSApplication sendEvent:] is used to
+/// fix KeyRelease events when the command key is down.
+///
+////////////////////////////////////////////////////////////
+-(void)sendEvent:(NSEvent*)anEvent;
+
+
+@end

@@ -1,0 +1,52 @@
+Tyrant Game Engine
+------------------
+
+Compilation Instructions:
+
+The included makefiles require specifying a build version and target processor architecture,
+ex. make *target* BUILD=DEBUG ARCH=64 builds 64bit Tyrant with debug and profiling symbols,
+make *target* BUILD=RELEASE ARCH=32 builds 32bit Tyrant with all symbols stripped from the binary
+to minimize size, and a variety of compiler optimizations for speed. You have two options
+for the target, either STATIC or SHARED depending on whether you want a static library or
+shared object library. Simply running "make" will build a shared object release build with
+the architecture of your operating system (or 32-bit on Windows).
+
+*NOTE* The makefiles do not provide an install target, you will need to setup your projects'
+compiler and linker search paths manually.
+
+Linux:
+
+Install the development version of the following packages
+
+* opengl
+* xlib
+* xrandr
+* freetype
+* glew
+* jpeg
+* sndfile
+* openal
+
+Use the included Makefile (found in the Build Scripts folder) to build the library.
+
+
+Windows:
+
+MSVC has yet to complete full C++11 support as of
+Visual Studio 2013. As a result, we support MinGW-w64 using
+GCC 4.7 or greater (minimum). You can download the compiler
+using the link in the Downloads section. Be sure to add
+the bin folder to your systems path, then run mingw32-make
+from the command line in the Build Scripts/Windows directory.
+
+When running applications built with Tyrant, you'll need to ensure
+then OpenAL and libsndfile dll's are in the same directory as the
+executable. These dll's are found under the extlibs/bin/*ARCH* directory.
+
+
+OS X:
+
+Use the included Makefile (found in the Build Scripts folder) to build the library.
+
+
+Copyright © 2014 Coldsnap Games

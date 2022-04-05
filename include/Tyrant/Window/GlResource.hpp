@@ -1,0 +1,56 @@
+/*************************************/
+/** Copyright © 2014 Coldsnap Games **/
+/*************************************/
+
+#ifndef TGE_GLRESOURCE_HPP
+#define TGE_GLRESOURCE_HPP
+
+/*************************************/
+/**             Headers             **/
+/*************************************/
+#include <Tyrant/Config.hpp>
+
+
+namespace TGE
+{
+////////////////////////////////////////////////////////////
+/// \brief Base class for classes that require an OpenGL context
+///
+////////////////////////////////////////////////////////////
+class TGE_API GlResource
+{
+protected :
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Default constructor
+    ///
+    ////////////////////////////////////////////////////////////
+    GlResource();
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Destructor
+    ///
+    ////////////////////////////////////////////////////////////
+    ~GlResource();
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Make sure that a valid OpenGL context exists in the current thread
+    ///
+    ////////////////////////////////////////////////////////////
+    static void ensureGlContext();
+};
+
+} // namespace TGE
+
+
+#endif // TGE_GLRESOURCE_HPP
+
+////////////////////////////////////////////////////////////
+/// \class TGE::GlResource
+/// \ingroup window
+///
+/// This class is for internal use only, it must be the base
+/// of every class that requires a valid OpenGL context in
+/// order to work.
+///
+////////////////////////////////////////////////////////////

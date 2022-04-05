@@ -1,0 +1,86 @@
+/*************************************/
+/** Copyright © 2014 Coldsnap Games **/
+/*************************************/
+
+/*************************************/
+/**             Headers             **/
+/*************************************/
+#import <AppKit/AppKit.h>
+
+////////////////////////////////////////////////////////////
+/// \brief Here we redefine some methods to allow grabbing fullscreen events
+///
+////////////////////////////////////////////////////////////
+@interface TGEWindow : NSWindow
+
+////////////////////////////////////////////////////////////
+/// \brief Allow to grab fullscreen events
+///
+/// acceptsFirstResponder and canBecomeKeyWindow messages must
+/// return YES to grab fullscreen events.
+///
+/// See http://stackoverflow.com/questions/999464/fullscreen-key-down-actions
+///
+/// \return YES
+///
+////////////////////////////////////////////////////////////
+-(BOOL)acceptsFirstResponder;
+
+////////////////////////////////////////////////////////////
+/// \brief Allow to grab fullscreen events
+///
+/// See acceptsFirstResponder documentation above.
+///
+/// \return YES
+///
+////////////////////////////////////////////////////////////
+-(BOOL)canBecomeKeyWindow;
+
+////////////////////////////////////////////////////////////
+/// \brief Prevent system alert
+///
+/// \param theEvent a Cocoa event
+///
+////////////////////////////////////////////////////////////
+-(void)keyDown:(NSEvent*)theEvent;
+
+////////////////////////////////////////////////////////////
+/// \brief This action method simulates the user clicking the close button
+///
+/// Override NSWindow implementation, see implementation for details
+///
+/// \param sender The message’s sender
+///
+////////////////////////////////////////////////////////////
+-(void)performClose:(id)sender;
+
+////////////////////////////////////////////////////////////
+/// \brief Enabling or disabling a specific menu item
+///
+/// \param menuItem An NSMenuItem object that represents the menu item
+///
+/// \return YES to enable menuItem, NO to disable it.
+///
+////////////////////////////////////////////////////////////
+-(BOOL)validateMenuItem:(NSMenuItem*)menuItem;
+
+@end
+
+
+////////////////////////////////////////////////////////////
+/// \brief Extension of NSWindow
+///
+/// Add some extra messages for TGE internal usage.
+///
+////////////////////////////////////////////////////////////
+@interface NSWindow (TGE)
+
+////////////////////////////////////////////////////////////
+/// Proxy for performClose: for the app delegate
+///
+/// \return nil
+///
+////////////////////////////////////////////////////////////
+-(id)tgeClose;
+
+@end
