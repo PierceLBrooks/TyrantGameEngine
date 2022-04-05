@@ -24,7 +24,7 @@ GMON_OUT_PREFIX = TYRANT_PROFILER_DATA
 # Build specific variables, if need be define these when running make
 # BUILD - Either Debug or Release, defaults to Release
 # ARCH - Either 32 or 64, defaults to 32
-BUILD ?= RELEASE
+BUILD ?= Release
 ARCH ?= 32
 
 ifeq ($(ARCH),64)
@@ -33,11 +33,11 @@ else
 	LDFLAGS := -L..\..\extlibs\libs-mingw\x32 -m32 -lglew -lopengl32 -lwinmm -lgdi32 -lwsock32 -lws2_32 -lfreetype -ljpeg -lopenal32 -lsndfile -pg -static-libgcc -static-libstdc++
 endif
 
-ifeq ($(BUILD),DEBUG)
+ifeq ($(BUILD),Debug)
 	CFLAGS  := $(CFLAGS) -m$(ARCH) -g3 -pg -Og
 endif
 
-ifeq ($(BUILD),RELEASE)
+ifeq ($(BUILD),Release)
 	CFLAGS  := $(CFLAGS) -m$(ARCH) -s -O3
 endif
 
