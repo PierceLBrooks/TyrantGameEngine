@@ -25,7 +25,7 @@ GMON_OUT_PREFIX = TGE_PROFILER_DATA
 # Build specific variables, if need be define these when running make
 # BUILD - Either Debug or Release, defaults to Release
 # ARCH - Either 32 or 64, defaults to OS type
-BUILD ?= RELEASE
+BUILD ?= Release
 
 ifeq ($(shell uname -p),x86_64)
 	ARCH ?= 64
@@ -33,12 +33,12 @@ else
 	ARCH ?= 32
 endif
 
-ifeq ($(BUILD),DEBUG)
+ifeq ($(BUILD),Debug)
 	CFLAGS  := $(CFLAGS) -m$(ARCH) -g -pg -Og
 	LDFLAGS := $(LDFLAGS) -m$(ARCH)
 endif
 
-ifeq ($(BUILD),RELEASE)
+ifeq ($(BUILD),Release)
 	CFLAGS  := $(CFLAGS) -m$(ARCH) -s -O3
 	LDFLAGS := $(LDFLAGS) -m$(ARCH)
 endif
